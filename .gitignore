@@ -1,1 +1,3 @@
 real_data/results/dist_files/*.csv
+real_data/scripts/.gwf/
+real_data/scripts/__pycache__/

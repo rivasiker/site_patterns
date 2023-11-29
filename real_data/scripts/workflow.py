@@ -8,7 +8,7 @@ human = 'hg38'
 chimp = 'panTro4'
 goril = 'gorGor3'
 orang = 'ponAbe2'
-macac = 'rheMac3'
+macaq = 'rheMac3'
 
 for chrom in chr_lst:
     # if not exists('../results/filtered_maf_files/{}.filtered.maf.gz'.format(chrom)):
@@ -43,7 +43,7 @@ for chrom in chr_lst:
                    memory='8g',
                    queue='short',
                    walltime= '1:00:00') << f"""
-            python calc_dist_pat_2.py {chrom} {human} {chimp} {goril} {orang} {macac}
+            python calc_dist_pat_2.py {chrom} {human} {chimp} {goril} {orang} {macaq}
         """
     # if not exists('../results/summary_files/summary_{}.csv'.format(chrom)):
     # if True:
