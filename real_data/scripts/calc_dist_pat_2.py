@@ -5,7 +5,18 @@ import sys
 import numpy as np
 
 
-def read_vcf(path, human, chimp, goril, orang, macac):
+def read_vcf(path, human, chimp, goril, orang, macaq):
+    """
+    This function reads a gzipped vcf file and parses it into a 
+    pandas data frame. 
+
+    Variables:
+        path (str): the path of the gzipped vcf file
+        human, chimp, goril, orang, macaq (str): the name of the 
+            column corresponding to the human, chimp, gorilla, 
+            orangutan and macaque sites in the vcf file, 
+            respectively. 
+    """
     with gzip.open(path, 'r') as f:
         lines = [l.decode("utf-8") for l in f if not l.startswith(b'##')]
     return pd.read_csv(
@@ -13,7 +24,7 @@ def read_vcf(path, human, chimp, goril, orang, macac):
         dtype={'#CHROM': str, 'POS': int, 'ID': str, 'REF': str, 'ALT': str,
                'QUAL': str, 'FILTER': str, 'INFO': str,
                'FORMAT':str,  human:str, chimp:str, 
-               goril:str, orang:str, macac:str,},
+               goril:str, orang:str, macaq:str,},
         sep='\t'
     ).rename(columns={'#CHROM': 'CHROM'})
 
@@ -22,11 +33,11 @@ human = sys.argv[2]
 chimp = sys.argv[3]
 goril = sys.argv[4]
 orang = sys.argv[5]
-macac = sys.argv[6]
+macaq = sys.argv[6]
 
-tab = read_vcf('../results/vcf_files/%s.vcf.gz' % i, human, chimp, goril, orang, macac)
+tab = read_vcf('../results/vcf_files/%s.vcf.gz' % i, human, chimp, goril, orang, macaq)
 # Create grouping variable
-tab['group'] = tab[human] +tab[chimp] +tab[goril] +tab[orang] +tab[macac]
+tab['group'] = tab[human] +tab[chimp] +tab[goril] +tab[orang] +tab[macaq]
 tab = tab[['CHROM', 'POS', 'group']]
 # Remove missing data or >2-allelic sites
 tab = tab[['.' not in i for i in tab['group']]]

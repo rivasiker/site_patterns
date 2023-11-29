@@ -24,7 +24,7 @@ for chrom in chr_lst:
         """.format(chrom)
     # if not exists('../results/summary_files/summary_{}.csv'.format(chrom)):
     # if not exists('../results/vcf_files/{}.vcf.gz'.format(chrom)):
-    if True:
+    if False:
         gwf.target('filteredmaf2vfc_{}'.format(chrom),
                inputs=['../data/{}.maf.gz'.format(chrom)],
                outputs=['../results/vcf_files/{}.vcf.gz'.format(chrom)],
@@ -35,7 +35,7 @@ for chrom in chr_lst:
         maffilter param=options_vcf.txt CHR={}
         """.format(chrom)
     # if not exists('../results/dist_files/dist_{}.csv'.format(chrom)):
-    # if True:
+    if True:
         gwf.target(f'vcf2dist_{chrom}',
                    inputs=['../results/vcf_files/{}.vcf.gz'.format(chrom)],
                    outputs=['../results/dist_files/dist_{}.csv'.format(chrom)],
