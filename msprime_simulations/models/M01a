@@ -1,0 +1,13 @@
+pop A 20_000
+pop B 20_000
+pop C 20_000
+pop D 20_000
+pop E 20_000
+pop AB 59_000
+pop ABC 34_000
+pop ABCD 10_000
+pop ABCDE 10_000
+split 4_380_000 A/B AB
+split 6_690_000 AB/C ABC
+split 18_000_000 ABC/D ABCD
+split 30_000_000 ABCD/E ABCDE
