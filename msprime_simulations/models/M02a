@@ -1,0 +1,15 @@
+pop left 5_000
+pop A 5_000
+pop B 5_000
+pop C 5_000
+pop D 5_000
+pop E 5_000
+pop AB 5_000
+pop ABC 5_000
+pop ABCD 5_000
+pop ABCDE 5_000
+admixture 5_000_000 A left/B 0.5/0.5
+split 6_000_000 left/B AB
+split 7_000_000 AB/C ABC
+split 18_000_000 ABC/D ABCD
+split 30_000_000 ABCD/E ABCDE
