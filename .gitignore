@@ -1,3 +1,7 @@
 real_data/results/dist_files/*.csv
 real_data/scripts/.gwf/
 real_data/scripts/__pycache__/
+msprime_simulations/results/01_vcf_files/
+msprime_simulations/results/02_dist_files/
+msprime_simulations/scripts/.gwf/
+msprime_simulations/scripts/__pycache__/
