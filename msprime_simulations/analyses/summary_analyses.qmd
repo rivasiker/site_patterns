@@ -15,7 +15,7 @@ library(colorspace)
 
 ```{r}
 
-nrep <- 8
+nrep <- 21
 totab <- tibble()
 
 for (type in 1:6) {
@@ -60,7 +60,7 @@ summarized_table_with_reversed <- summarized_table |>
 ```{r fig.height=15, fig.width=25}
 
 order_pattern <- c('H', 'C', 'HC', 'G', 'HG', 'CG', 'HCG', 'O', 'HO', 'CO', 'GO', 'HCO', 'HGO', 'CGO', 'HCGO')
-order_pattern <- c('H', 'C', 'HC', 'G', 'HG', 'CG', 'HCG', 'O', 'HCGO')
+# order_pattern <- c('H', 'C', 'HC', 'G', 'HG', 'CG', 'HCG', 'O', 'HCGO')
 
 color_tab <- expand_grid(
     from = factor(order_pattern, order_pattern),
@@ -81,7 +81,7 @@ color_tab <- expand_grid(
 summarized_table_with_reversed |> 
   group_by(model, from, distance) |> 
   mutate(
-    n = n/sum(n),
+    # n = n/sum(n),
     model = case_when(
       model == 1 ~ 'm = 0',
       model == 2 ~ 'm = 1',
@@ -101,7 +101,7 @@ summarized_table_with_reversed |>
   geom_rect(
     aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, fill = col), 
     data = color_tab) +
-  geom_smooth(aes(distance, n, color = model), se = FALSE) +
+  geom_point(aes(distance, n, color = model), se = FALSE) +
   scale_x_continuous(trans = 'log10') +
   ggh4x::facet_grid2(from~to, scales = "free_y", independent = "y") +
   theme_few() +
