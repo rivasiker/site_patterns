@@ -1,5 +1,26 @@
 from gwf import Workflow, AnonymousTarget
 
+"""
+In order to run this workflow, you need to have certain packages installed:
+    - gwf
+    - pandas
+    - numpy
+    - msprime
+If it is the first time running the workflow, and you are running it on slurm,
+you should run the following command:
+    gwf config set backend slurm
+Now, try running
+    gwf status
+This should print all the to-be scheduled jobs of the workflow. In order to
+run the workflow, run the following:
+    gwf run
+By running gwf status again, you can check the current status of the jobs. 
+To access the logs, try running
+    gwf logs job_name
+Or, alternatively, to access the error logs, run
+    gwf logs -e job_name
+"""
+
 gwf = Workflow()
 
 nstart = 8
